@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#song-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #012622;
+}
+#song-image-container {
+  border: solid 2px black;
+  height: 40%;
+  width: 20%;
+  min-width: 300px;
+  border-radius: 25%;
+  overflow: hidden;
+}
+#song-image {
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+h1,
+#title,
+#author {
+  color: #368f8b;
+}
+h1 {
+  font-size: 9vh;
+}
+#title {
+  font-size: 7vh;
+}
+#author {
+  font-size: 6vh;
+}
