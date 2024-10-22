@@ -1,0 +1,37 @@
+:root {
+  --color1: #1a1a1d;
+  --color2: #a8ff60;
+}
+body {
+  background-color: var(--color1);
+  color: var(--color2);
+}
+#projects-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#title {
+  font-size: 60px;
+}
+.project {
+  list-style-type: none;
+  margin: 20px;
+  border: transparent 3px solid;
+}
+.project:hover {
+  border: var(--color2) 3px solid;
+}
+.project a {
+  text-decoration: none;
+  color: var(--color2);
+  font-size: 30px;
+}
+.disabled:hover {
+  border: transparent 3px solid;
+}
+.disabled a {
+  color: gray;
+  cursor: initial;
+}
