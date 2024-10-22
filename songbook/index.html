@@ -4,20 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/favicon.png" />
     <script src="script.js" defer></script>
     <title>Cancionero</title>
   </head>
   <body>
     <div id="song-container">
-      <h1>Cancionero</h1>
-      <h2 id="title">Titulo canción</h2>
-      <h3 id="author">Autor</h3>
+      <h1></h1>
+      <h2 id="title"></h2>
+      <h3 id="author"></h3>
       <div id="song-image-container">
-        <img
-          src="https://www.104.fr/cache/media/ben-bohmer/c,124,253,1137,825-cr,1380,720-q,85-cr,1380,720-cr,995,520-q,85-cr,995,520-cr,610,320-q,85-cr,610,320-a0e515.jpg"
-          alt="song-image"
-          id="song-image"
-        />
+        <img src="#" alt="song image" id="song-image" />
+      </div>
+      <button class="btn" id="show-sheet-btn">Ver notas</button>
+      <h3 id="sheet"></h3>
+      <div class="btn-container">
+        <button class="btn btn-disabled" id="previous-btn">&lt</button>
+        <button class="btn" id="randomize-btn">Mezclar</button>
+        <button class="btn" id="next-btn">&gt</button>
       </div>
     </div>
   </body>
