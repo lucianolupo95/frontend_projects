@@ -1,0 +1,160 @@
+:root {
+  --color1: #313638;
+  --color2: white;
+  --font-size: 30px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: var(--color1);
+}
+#form {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#form label {
+  text-align: center;
+  font-size: 35px;
+  color: var(--color2);
+}
+#options-textarea {
+  background-color: var(--color1);
+  color: var(--color2);
+  border: 3px solid var(--color2);
+  width: 80%;
+  height: 80%;
+  padding: 10px;
+  font-size: var(--font-size);
+  outline: none;
+}
+#submit-btn {
+  margin: 3px;
+  background-color: var(--color1);
+  color: var(--color2);
+  font-size: var(--font-size);
+  border: 3px solid var(--color2);
+  padding: 20px;
+}
+
+#options-container {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  background-color: var(--color1);
+  display: none;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.option-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+  height: 60%;
+  text-align: center;
+  justify-content: flex-end;
+  align-items: center;
+}
+.option-label,
+.option-btn {
+  font-size: var(--font-size);
+}
+.option-label {
+  color: var(--color2);
+  font-size: var(--font-size);
+}
+.option-btn {
+  margin: 3px;
+  background-color: var(--color1);
+  color: var(--color2);
+  font-size: var(--font-size);
+  border: 3px solid var(--color2);
+  padding: 20px;
+  cursor: pointer;
+  width: 100px;
+}
+#option1-btn:hover,
+#option2-btn:hover {
+  animation: vibrate 0.3s ease-in-out infinite;
+}
+@keyframes vibrate {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+#option1-btn:active,
+#option2-btn:active {
+  background-color: var(--color2);
+  color: var(--color1);
+}
+#final-decision-container {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  background-color: var(--color1);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: var(--color2);
+}
+#winner {
+  font-size: 50px;
+  color: gold;
+}
+#again-btn {
+  margin: 3px;
+  background-color: var(--color1);
+  color: var(--color2);
+  font-size: var(--font-size);
+  border: 3px solid var(--color2);
+  padding: 20px;
+}
+#again-btn:hover {
+  animation: vibrate 0.3s ease-in-out infinite;
+}
+@keyframes vibrate {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+#again-btn:active {
+  background-color: var(--color2);
+  color: var(--color1);
+}
