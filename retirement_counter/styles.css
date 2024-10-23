@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100dvh;
+  overflow: hidden;
+}
+.img-container {
+  height: 100dvh;
+  width: 100vw;
+  position: relative;
+}
+.spain-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute; /* Superponemos ambas imágenes */
+  top: 0;
+  left: 0;
+  transition: opacity 1.5s ease-in-out, filter 1.5s ease-in-out;
+  opacity: 0; /* Ocultas inicialmente */
+  z-index: 0;
+}
+.spain-counter {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Aseguramos que el contador esté encima de las imágenes */
+}
+.spain-counter p {
+  font-size: 30px;
+  color: white;
+  text-shadow: black 2px 2px 2px;
+}
+.visible {
+  opacity: 1;
+  filter: blur(0);
+  z-index: 0; /* La imagen visible debe estar debajo del contador */
+}
+.fade {
+  opacity: 0;
+  filter: blur(10px); /* Efecto de desenfoque */
+}
+.hidden {
+  opacity: 0; /* Ocultar la imagen sin eliminarla para permitir la transición */
+  z-index: -1; /* Mantener la imagen fuera del flujo visual */
+}
+.controls {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #ff7f50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #ff4500;
+}
+#countdown {
+  text-align: center;
+}
