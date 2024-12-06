@@ -5,13 +5,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  color: white;
+  text-shadow: black 3px 3px 3px;
+  background: #1a1a1d;
+  flex-direction: column;
 }
 
 .container {
   text-align: center;
-  background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -20,8 +21,7 @@ body {
 button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #f4f4f4;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -35,4 +35,8 @@ button:hover {
   margin-top: 20px;
   font-size: 16px;
   color: #333;
+}
+#training-gif {
+  max-height: 50vh;
+  max-width: 80vw;
 }
