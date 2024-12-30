@@ -1,3 +1,12 @@
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("./sw.js")
+    .then(() => console.log("Service Worker registrado."))
+    .catch((error) =>
+      console.error("Error al registrar el Service Worker:", error)
+    );
+}
+
 // Pedir permiso para enviar notificaciones
 if ("Notification" in window) {
   Notification.requestPermission().then((permission) => {
@@ -17,16 +26,17 @@ function showNotification() {
   }
 }
 
-// Función para reproducir un sonido
-function playSound() {
-  const audio = new Audio("alarm.mp3"); // Usa el archivo de sonido que elijas
-  audio
-    .play()
-    .catch((error) => console.error("Error al reproducir el sonido:", error));
-}
-
-// Lógica principal
 document.getElementById("start-button").addEventListener("click", () => {
-  showNotification();
-  playSound();
+  const audio = new Audio("alarm.mp3");
+  setTimeout(() => {
+    audio
+      .play()
+      .then(() => {
+        console.log("Sonido reproducido.");
+      })
+      .catch((error) => {
+        console.error("Error al reproducir sonido:", error);
+        alert("Asegúrate de interactuar con la página para reproducir sonido.");
+      });
+  }, 2000);
 });
