@@ -7,7 +7,7 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "icono.png",
+      "src": "assets/run.png",
       "sizes": "192x192",
       "type": "image/png"
     }
