@@ -1,32 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
-    <title>Decisions Maker</title>
-  </head>
-  <body>
-    <form id="form">
-      <label for="options">Escribe tus opciones</label>
-      <textarea id="options-textarea"></textarea>
-      <input type="submit" id="submit-btn" />
-    </form>
-    <div id="options-container">
-      <div class="option-container">
-        <label for="option1" class="option-label" id="label1">Opcion 1</label>
-        <button class="option-btn" id="option1-btn">1</button>
-      </div>
-      <div class="option-container">
-        <label for="option2" class="option-label" id="label2">Opcion2</label>
-        <button class="option-btn" id="option2-btn">2</button>
-      </div>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Decisions Maker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <form id="form">
+    <label for="options">Escribe tus opciones</label>
+    <textarea id="options-textarea"></textarea>
+    <p id="counter">Opciones: 0</p>
+    <div>
+      <button class="submit-btn" id="simple-decision-btn" type="button">Decisión Simple</button>
+      <button class="submit-btn" id="full-decision-btn" type="button">Decisión Completa</button>
     </div>
-    <div id="final-decision-container">
-      <h2>El resultado de tu decisión es:</h2>
-      <strong id="winner"></strong>
-      <button id="again-btn">Volver a empezar</button>
+  </form>
+
+  <div id="options-container">
+    <div class="option-container">
+      <label class="option-label" id="label1">Opción 1</label>
+      <button class="option-btn" id="option1-btn">1</button>
     </div>
-  </body>
+    <div class="option-container">
+      <label class="option-label" id="label2">Opción 2</label>
+      <button class="option-btn" id="option2-btn">2</button>
+    </div>
+  </div>
+
+  <div id="progress-container">
+    <div class="progress-bar">
+      <div id="progress-fill"></div>
+    </div>
+    <p id="progress-text">Comparaciones: 0 / 0 | Faltan: 0 | 0%</p>
+  </div>
+
+  <div id="final-decision-container">
+    <h2>El resultado de tu decisión es:</h2>
+    <strong id="winner"></strong>
+    <button id="again-btn">Volver a empezar</button>
+  </div>
+</body>
 </html>
