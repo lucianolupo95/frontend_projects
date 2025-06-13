@@ -34,6 +34,9 @@
             const green = Math.ceil(Math.random()*255);
             const blue = Math.ceil(Math.random()*255);
             body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+            if (count == 108){
+                  navigator.vibrate([1000, 500, 2000]);
+            }
         }
     </script>
 </body>
