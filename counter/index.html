@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        body{
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
+            cursor: pointer;
+        }
+        #counter{
+            font-size: 80px;
+            text-shadow: 1px 1px 8px white;
+            user-select: none;
+        }
+    </style>
+</head>
+<body id="body">
+    <h1 id="counter">0</h1>
+    <script>
+        const body = document.getElementById("body");
+        const counter = document.getElementById("counter");
+        let count = 0;
+        body.addEventListener("click",add);
+        function add(){
+            count ++;
+            counter.innerText = count;
+            const red = Math.ceil(Math.random()*255);
+            const green = Math.ceil(Math.random()*255);
+            const blue = Math.ceil(Math.random()*255);
+            body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        }
+    </script>
+</body>
+</html>
