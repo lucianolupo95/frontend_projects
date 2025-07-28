@@ -2,6 +2,10 @@ const camera = document.getElementById('camera');
 const snapBtn = document.getElementById('snap');
 const exportBtn = document.getElementById('export-pdf');
 const switchCameraBtn = document.getElementById('switch-camera');
+const enableCameraBtn = document.getElementById('enable-camera');
+const uploadInput = document.getElementById('upload');
+const compressCheckbox = document.getElementById('compress');
+const dropArea = document.getElementById('drop-area');
 const gallery = document.getElementById('gallery');
 
 let photos = [];
@@ -13,17 +17,19 @@ function startCamera(facingMode = 'environment') {
     currentStream.getTracks().forEach(track => track.stop());
   }
 
-  navigator.mediaDevices.getUserMedia({
-    video: { facingMode }
-  })
-  .then(stream => {
-    currentStream = stream;
-    camera.srcObject = stream;
-  })
-  .catch(() => alert("Camera access denied"));
+  navigator.mediaDevices.getUserMedia({ video: { facingMode } })
+    .then(stream => {
+      currentStream = stream;
+      camera.srcObject = stream;
+      camera.style.display = 'block';
+      snapBtn.disabled = false;
+    })
+    .catch(() => alert("Camera access denied"));
 }
 
-startCamera();
+enableCameraBtn.addEventListener('click', () => {
+  startCamera();
+});
 
 switchCameraBtn.addEventListener('click', () => {
   usingFrontCamera = !usingFrontCamera;
@@ -40,6 +46,39 @@ snapBtn.addEventListener('click', () => {
   photos.push({ dataURL, rotation: 0 });
   renderGallery();
 });
+
+uploadInput.addEventListener('change', (event) => {
+  handleFiles(event.target.files);
+});
+
+dropArea.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropArea.style.backgroundColor = "#e0e0e0";
+});
+
+dropArea.addEventListener('dragleave', () => {
+  dropArea.style.backgroundColor = "#fff";
+});
+
+dropArea.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropArea.style.backgroundColor = "#fff";
+  if (e.dataTransfer.files) {
+    handleFiles(e.dataTransfer.files);
+  }
+});
+
+function handleFiles(files) {
+  Array.from(files).forEach(file => {
+    if (!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      photos.push({ dataURL: e.target.result, rotation: 0 });
+      renderGallery();
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 function renderGallery() {
   gallery.innerHTML = '';
@@ -91,6 +130,7 @@ window.deletePhoto = function (index) {
 
 exportBtn.addEventListener('click', async () => {
   const { jsPDF } = window.jspdf;
+  const compress = compressCheckbox.checked;
   const pdf = new jsPDF();
 
   for (let i = 0; i < photos.length; i++) {
@@ -110,7 +150,7 @@ exportBtn.addEventListener('click', async () => {
         ctx.drawImage(imgElement, -imgElement.width / 2, -imgElement.height / 2);
         ctx.restore();
 
-        const finalDataURL = canvas.toDataURL('image/jpeg');
+        const finalDataURL = canvas.toDataURL('image/jpeg', compress ? 0.5 : 1.0);
         if (i > 0) pdf.addPage();
         pdf.addImage(finalDataURL, 'JPEG', 10, 10, 190, 0);
         resolve();

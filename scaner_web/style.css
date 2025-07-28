@@ -14,21 +14,44 @@ video {
 
 .controls {
   margin: 1em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em;
 }
 
-button {
-  padding: 0.8em 1.2em;
+button, input[type="file"], label {
+  padding: 0.6em 1em;
   font-size: 1rem;
   border: none;
   background-color: #007bff;
   color: white;
   border-radius: 5px;
   cursor: pointer;
-  margin: 0.5em;
 }
 
-button:hover {
+label {
+  background-color: #555;
+}
+
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled),
+label:hover {
   background-color: #0056b3;
+}
+
+#drop-area {
+  border: 2px dashed #999;
+  padding: 2em;
+  margin: 1em auto;
+  width: 90%;
+  max-width: 600px;
+  background-color: #fff;
+  color: #555;
 }
 
 .gallery {
