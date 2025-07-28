@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Escáner Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./assets/scanner.jpg">
+</head>
+<body class="dark">
+
+  <header class="header">
+    <div class="header-left">
+      <label for="language-switcher" id="label-language">Idioma</label>
+      <select id="language-switcher">
+        <option value="es" selected>🇪🇸 Español</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="val">🇪🇸 Valencià</option>
+        <option value="ja">🇯🇵 日本語</option>
+      </select>
+    </div>
+    <div class="header-right">
+      <label for="theme-switcher" id="label-theme">Tema</label>
+      <label class="theme-toggle">
+        <input type="checkbox" id="theme-switcher" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <h1 id="title">📄 Escáner Web</h1>
+
+    <div class="controls">
+      <input type="file" id="upload" accept="image/*" multiple hidden>
+      <label for="upload" class="custom-file-upload" id="file-label">Elegir archivo</label>
+      <button id="toggle-camera">📷 Usar cámara</button>
+      <video id="camera" autoplay playsinline class="hidden"></video>
+
+      <div id="camera-controls" class="camera-controls hidden">
+        <button id="switch-camera">🔄</button>
+        <button id="snap">📸</button>
+      </div>
+      <label class="compress-label">
+        <input type="checkbox" id="compress">
+        <span id="compress-text">Comprimir imágenes</span>
+      </label>
+
+      <button id="export-pdf">📥 Descargar PDF</button>
+    </div>
+
+    <div id="drop-area">Arrastra aquí tus imágenes</div>
+    <div class="gallery" id="gallery"></div>
+  </main>
+
+  <footer id="footer" class="footer"></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
