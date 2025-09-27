@@ -1,0 +1,20 @@
+# Node modules y dependencias locales
+node_modules/
+
+# Caché de Vitest
+.vitest/
+
+# Archivos temporales
+*.log
+*.tmp
+*.swp
+
+# Configs del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos generados por el sistema operativo o editores
+*.sublime-workspace
+*.sublime-project
+*.vscode/
+.idea/

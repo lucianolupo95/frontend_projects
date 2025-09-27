@@ -2,90 +2,100 @@ let currentLang = "es";
 
 const translations = {
   es: {
-    title: "📄 Escáner Web",
-    drop: "Arrastra aquí tus imágenes",
-    enableCamera: "📷 Usar cámara",
-    disableCamera: "📷 Dejar de usar cámara",
-    switchCamera: "🔄 Cambiar cámara",
-    snap: "📸 Capturar",
-    compress: "Comprimir imágenes",
-    export: "📥 Descargar PDF",
+    title: "Escáner Web",
+    drop: "Suelta tus imágenes aquí",
     fileLabel: "Elegir archivo",
-    theme: "Tema",
+    enableCamera: "Usar cámara",
+    disableCamera: "Dejar de usar cámara",
+    export: "Descargar PDF",
+    capture: "Capturar",
+    switch: "Cambiar cámara",
     language: "Idioma",
-    rotate: "🔄",
-    delete: "🗑️",
+    compress: "Comprimir imágenes",
     footer:
-      "Un proyecto de <a href='https://lucianolupo95.github.io' target='_blank'>Luciano Lupo</a>",
+      'Un proyecto de <a href="https://lucianolupo95.github.io" target="_blank">Luciano Lupo</a>',
   },
   en: {
-    title: "📄 Web Scanner",
+    title: "Web Scanner",
     drop: "Drop your images here",
-    enableCamera: "📷 Use Camera",
-    disableCamera: "📷 Stop Camera",
-    switchCamera: "🔄 Switch Camera",
-    snap: "📸 Snap",
-    compress: "Compress images",
-    export: "📥 Download PDF",
     fileLabel: "Choose file",
-    theme: "Theme",
+    enableCamera: "Use camera",
+    disableCamera: "Stop using camera",
+    export: "Download PDF",
+    capture: "Capture",
+    switch: "Switch camera",
     language: "Language",
-    rotate: "🔄",
-    delete: "🗑️",
+    compress: "Compress images",
     footer:
-      "A project by <a href='https://lucianolupo95.github.io' target='_blank'>Luciano Lupo</a>",
+      'A project by <a href="https://lucianolupo95.github.io" target="_blank">Luciano Lupo</a>',
   },
   val: {
-    title: "📄 Escàner Web",
-    drop: "Arrossega ací les imatges",
-    enableCamera: "📷 Usar càmera",
-    disableCamera: "📷 Aturar càmera",
-    switchCamera: "🔄 Canviar càmera",
-    snap: "📸 Capturar",
-    compress: "Compressió d’imatges",
-    export: "📥 Descarregar PDF",
+    title: "Escàner Web",
+    drop: "Deixa caure les imatges ací",
     fileLabel: "Triar fitxer",
-    theme: "Tema",
+    enableCamera: "Usar càmera",
+    disableCamera: "Parar càmera",
+    export: "Descarregar PDF",
+    capture: "Capturar",
+    switch: "Canviar càmera",
     language: "Idioma",
-    rotate: "🔄",
-    delete: "🗑️",
+    compress: "Comprimir imatges",
     footer:
-      "Un projecte de <a href='https://lucianolupo95.github.io' target='_blank'>Luciano Lupo</a>",
+      'Un projecte de <a href="https://lucianolupo95.github.io" target="_blank">Luciano Lupo</a>',
   },
   ja: {
-    title: "📄 ウェブスキャナー",
+    title: "ウェブスキャナー",
     drop: "ここに画像をドロップしてください",
-    enableCamera: "📷 カメラを使う",
-    disableCamera: "📷 カメラを止める",
-    switchCamera: "🔄 カメラ切替",
-    snap: "📸 撮影",
-    compress: "画像を圧縮する",
-    export: "📥 PDFをダウンロード",
     fileLabel: "ファイルを選択",
-    theme: "テーマ",
+    enableCamera: "カメラを使う",
+    disableCamera: "カメラを停止",
+    export: "PDFをダウンロード",
+    capture: "撮影",
+    switch: "カメラを切り替え",
     language: "言語",
-    rotate: "🔄",
-    delete: "🗑️",
+    compress: "画像を圧縮する",
     footer:
-      "<a href='https://lucianolupo95.github.io' target='_blank'>Luciano Lupo</a> のプロジェクトです",
+      '<a href="https://lucianolupo95.github.io" target="_blank">Luciano Lupo</a>のプロジェクト',
   },
 };
 
-export function t(key) {
-  return translations[currentLang][key] || key;
-}
-
 export function setLanguage(lang) {
-  currentLang = lang;
+  currentLang = lang in translations ? lang : "es";
 }
 
-export function applyTranslation(lang) {
+export function t(key) {
+  return translations[currentLang]?.[key] || key;
+}
+
+export async function applyTranslation(lang) {
   setLanguage(lang);
-  document.getElementById("title").textContent = t("title");
-  document.getElementById("drop-area").textContent = t("drop");
-  document.getElementById("file-label").textContent = t("fileLabel");
-  document.getElementById("compress-text").textContent = t("compress");
-  document.getElementById("label-language").textContent = t("language");
-  document.getElementById("label-theme").textContent = t("theme");
-  document.getElementById("footer").innerHTML = t("footer");
+
+  const update = (id, value, prop = "textContent") => {
+    const el = document.getElementById(id);
+    if (el) el[prop] = value;
+  };
+
+  update("title", t("title"));
+  update("drop-area", t("drop"));
+  update("file-label", t("fileLabel"));
+  update("upload", t("fileLabel"), "title");
+
+  try {
+    const isCameraActive = await import("./camera.js").then(
+      (m) => m.isCameraActive
+    );
+    update(
+      "toggle-camera",
+      isCameraActive() ? t("disableCamera") : t("enableCamera")
+    );
+  } catch {
+    update("toggle-camera", t("enableCamera"));
+  }
+
+  update("export-pdf", "📥 " + t("export"));
+  update("snap", t("capture"));
+  update("switch-camera", t("switch"));
+  update("label-language", t("language"));
+  update("label-compress", t("compress"));
+  update("footer", t("footer"), "innerHTML");
 }
