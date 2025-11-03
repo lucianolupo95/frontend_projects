@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Japonés para Eze</title>
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- 🔊 Toggle Audio -->
+<button id="audioToggle" class="audio-btn">🔊</button>
+
+<!-- 🏠 Vista Inicio -->
+<div id="home" class="view">
+  <h1>Japonés para Eze 🇯🇵</h1>
+  <p id="wordCount">Cargando...</p>
+  <button id="startBtn" class="btn primary">Comenzar práctica</button>
+  <button id="viewListBtn" class="btn secondary">Ver listado de palabras</button>
+</div>
+
+<!-- 🎯 Vista Quiz -->
+<div id="quiz" class="view hidden">
+  <div id="progressBar"><div id="progressFill"></div></div>
+  <p id="quizProgress"></p>
+  <h2 id="quizQuestion"></h2>
+  <input id="answerInput" type="text" placeholder="Escribí tu respuesta..." autofocus />
+  <button id="submitAnswer" class="btn primary">Responder</button>
+
+  <div id="quizFeedback"></div>
+
+  <div class="bottom-nav">
+    <button class="btn secondary" onclick="showView('home')">Volver</button>
+  </div>
+</div>
+
+<!-- 📃 Vista Listado -->
+<div id="list" class="view hidden">
+  <h2>Listado de palabras</h2>
+  <input id="searchInput" type="text" placeholder="Buscar..." />
+
+  <table id="wordsTable">
+    <thead>
+      <tr>
+        <th id="sortEs">Español ⬍</th>
+        <th id="sortJa">Japonés ⬍</th>
+      </tr>
+    </thead>
+    <tbody id="words-table-body"></tbody>
+  </table>
+
+  <button id="downloadCSV" class="btn secondary">Descargar CSV</button>
+
+  <div class="bottom-nav">
+    <button class="btn secondary" onclick="showView('home')">Inicio</button>
+    <button class="btn primary" onclick="startQuiz()">Práctica</button>
+  </div>
+</div>
+
+<!-- 🏁 Vista Resultados -->
+<div id="results" class="view hidden">
+  <h2>Resultados</h2>
+  <p id="scoreText"></p>
+  <div id="resultImage"></div>
+
+  <div id="retryBlock">
+    <p id="retryMessage"></p>
+    <button id="retryBtn" class="btn primary">Volver a empezar</button>
+  </div>
+
+  <button id="resultsHomeBtn" class="btn secondary hidden" onclick="showView('home')">Volver al inicio</button>
+  <button class="btn secondary" onclick="showView('list')">Ver listado</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
