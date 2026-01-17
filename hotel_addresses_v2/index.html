@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Logo.png">
+  <title>Generador de avisos de ambulancia</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Generador de avisos de ambulancia</h1>
+
+    <form id="solicitudForm">
+      <div class="form-group">
+        <label for="hotelSelect">Seleccionar hotel:</label>
+        <select id="hotelSelect">
+          <option value="">-- Seleccionar --</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="habitacion">Habitación (opcional):</label>
+        <input type="text" id="habitacion" placeholder="Ej: 204">
+      </div>
+
+      <fieldset>
+        <legend>Tipo de solicitud:</legend>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="tipoServicio" value="ambulancia" checked>
+            Ambulancia
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="tipoServicio" value="medico">
+            Médico a domicilio
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="button" id="generarBtn" class="btn-primary">Generar y copiar</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+
+    <div id="preview" class="preview hidden">
+      <h2>Vista previa:</h2>
+      <pre id="previewText"></pre>
+    </div>
+  </div>
+
+  <script src="data/data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
