@@ -171,4 +171,20 @@ ${lugarLinea}`;
     resultado.classList.remove("empty", "success", "error");
     resultado.classList.add(tipo);
   }
+
+  // Email copy functionality
+  const emailLink = document.getElementById("emailLink");
+  const emailToast = document.getElementById("emailToast");
+
+  emailLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText("lnlupo95@gmail.com").then(() => {
+      emailToast.classList.remove("hidden");
+      setTimeout(() => emailToast.classList.add("show"), 10);
+      setTimeout(() => {
+        emailToast.classList.remove("show");
+        setTimeout(() => emailToast.classList.add("hidden"), 300);
+      }, 2000);
+    });
+  });
 });
