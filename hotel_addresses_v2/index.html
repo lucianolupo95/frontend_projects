@@ -13,10 +13,11 @@
 
     <form id="solicitudForm">
       <div class="form-group">
-        <label for="hotelSelect">Seleccionar hotel:</label>
-        <select id="hotelSelect">
-          <option value="">-- Seleccionar --</option>
-        </select>
+        <label for="hotelInput">Seleccionar hotel:</label>
+        <div class="autocomplete-container">
+          <input type="text" id="hotelInput" placeholder="Escribí o seleccioná un hotel..." autocomplete="off">
+          <div id="hotelDropdown" class="autocomplete-dropdown hidden"></div>
+        </div>
       </div>
 
       <div class="form-group">
