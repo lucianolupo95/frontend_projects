@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Cuestionario</title>
+</head>
+<body>
+    <main>
+        <h1>Cuestionario breve</h1>
+        <p>Respondé estas preguntas rápidas. No te va a llevar más de un minuto.</p>
+
+        <form id="form">
+            <fieldset>
+                <legend>¿Tenés esquizofrenia?</legend>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="schizofrenia-true" name="schizofrenia" value="true" required>
+                        <label for="schizofrenia-true">Sí</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="schizofrenia-false" name="schizofrenia" value="false">
+                        <label for="schizofrenia-false">No</label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>¿Creés en la astrología?</legend>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="astrology-true" name="astrology" value="true" required>
+                        <label for="astrology-true">Sí</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="astrology-false" name="astrology" value="false">
+                        <label for="astrology-false">No</label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>¿Querés dejar un comentario opcional?</legend>
+                <label for="comment">Contanos qué temas te interesan más.</label>
+                <textarea id="comment" name="comment" placeholder="Ejemplo: signos, compatibilidad, cartas astrales..."></textarea>
+            </fieldset>
+
+            <button type="submit">Enviar respuestas</button>
+        </form>
+        <div id="result-modal" class="modal hidden">
+            <div class="modal-content">
+                <button id="close-modal" class="close-button" type="button">×</button>
+                <h2>Resultados del cuestionario</h2>
+                <div id="result-content"></div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
